@@ -1,17 +1,18 @@
 create table if not exists usuario
 (id_user int primary key, 
- correo varchar(40), 
- nombre varchar(30), 
- apellido varchar(30), 
+ correo varchar(50),
+ clave varchar(50),
+ nombre varchar(50), 
+ apellido varchar(50),
+ direccion varchar(50),
  edad int, 
  is_admin bool);
  
  create table if not exists empresa
  (id_empresa int primary key,
  correo varchar(40),
- nombre varchar(30),
- apellido varchar(30),
  clave varchar(30),
+ nombre varchar(30),
  direccion varchar(50),
  restriccion_edad bool);
  
@@ -19,6 +20,7 @@ create table if not exists usuario
  (numero_serie int primary key,
  nombre varchar(30),
  precio int,
+ stock int,
  id_empresa int,
  constraint fk_customer
  	foreign key(id_empresa)
@@ -100,4 +102,6 @@ constraint fk_catempemp
 		references empresa(id_empresa),
 	foreign key (id_catempresa)
 		references catempresa(id_catempresa));
-  
+
+
+SELECT puntuacion FROM usuario INNER JOIN valoracion ON usuario.id_user = valoracion.id_user;;
