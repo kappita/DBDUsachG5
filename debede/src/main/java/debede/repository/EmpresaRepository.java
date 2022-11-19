@@ -50,28 +50,30 @@ public class EmpresaRepository {
         }
     }
     
-    public void delete(int id) {
+    public String delete(int id) {
         try(Connection conn = sql2o.open()) {
             conn.createQuery("DELETE * FROM empresa WHERE id=:id")
                 .addParameter("id", id)
                 .executeUpdate();
+            return "Se borro la empresa";
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return "Se borro la empresa";
         }
     }
     
     public String update(Empresa empresa, int id){
         try(Connection conn = sql2o.open()){
-            String updateSql = "update empresa set nombre=:nombre, edad=:edad " + 
+            String updateSql = "UPDATE empresa SET empresa.nombre=:nombre" + 
                     "WHERE id=:id";
             conn.createQuery(updateSql)
                 .addParameter("id", id)
                 .addParameter("nombre", empresa.getNombre())
                 .executeUpdate();
-            return "Se actualizo el Usuario";
+            return "Se actualizo el Empresa";
         }catch (Exception e) {
             System.out.println(e.getMessage());
-            return "Fallo al actualizar Usuario";
+            return "Fallo al actualizar Empresa";
         }
     }
 }

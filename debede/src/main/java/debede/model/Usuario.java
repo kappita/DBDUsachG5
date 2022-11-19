@@ -11,7 +11,7 @@ public class Usuario {
     private String correo;
     private String clave;
     private String direccion;
-    private final boolean admin;
+    private boolean admin;
 
     public Usuario(int id, String nombre, int edad, String correo, String clave, String direccion, boolean admin) {
         this.id = id;

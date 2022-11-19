@@ -12,7 +12,7 @@ public class Empresa {
     private int id;
     private String nombre;
 
-    public Empresa(int id, String nombre) {
+    public Empresa(String nombre, int id) {
         this.id = id;
         this.nombre = nombre;
     }
