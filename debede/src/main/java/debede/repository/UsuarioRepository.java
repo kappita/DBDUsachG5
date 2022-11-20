@@ -22,8 +22,8 @@ public class UsuarioRepository {
     
     public Usuario crear(Usuario usuario){
         try(Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO usuario (id, nombre, edad, correo, clave, dirreccion, admin) " + 
-                    "VALUES (:id, :nombre, :edad, :correo, :clave, :direccion, :admin)";
+            String sql = "INSERT INTO usuario (id, nombre, edad, correo, clave, direccion, admin)" + 
+                    " VALUES (:id, :nombre, :edad, :correo, :clave, :direccion, :admin)";
             conn.createQuery(sql)
                     .addParameter("id", usuario.getId())
                     .addParameter("nombre", usuario.getNombre())
@@ -33,7 +33,6 @@ public class UsuarioRepository {
                     .addParameter("direccion", usuario.getDireccion())
                     .addParameter("admin", Boolean.FALSE)
                     .executeUpdate();
-            System.out.println("Se creo usuario");
             return usuario;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -46,6 +45,7 @@ public class UsuarioRepository {
             return conn.createQuery("SELECT * FROM usuario ORDER BY nombre ASC")
                     .executeAndFetch(Usuario.class);
         } catch (Exception e) {
+            System.out.println("a");
             System.out.println(e.getMessage());
             return null;
         }
@@ -74,8 +74,8 @@ public class UsuarioRepository {
     
     public String update(Usuario usuario, int id){
         try(Connection conn = sql2o.open()){
-            String updateSql = "UPDATE empresa SET nombre=:nombre, edad=:edad, " + 
-                    "correo=:correo, clave:=clave,direccion=:direccion WHERE id=:id";
+            String updateSql = "UPDATE usuario SET nombre=:nombre, edad=:edad" + 
+                    ", correo=:correo, clave=:clave,direccion=:direccion WHERE id=:id";
             conn.createQuery(updateSql)
                 .addParameter("id", id)
                 .addParameter("nombre", usuario.getNombre())
