@@ -1,7 +1,6 @@
 package debede.repository;
 
 import debede.model.Empresa;
-import debede.model.Usuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,7 +51,7 @@ public class EmpresaRepository {
     
     public String delete(int id) {
         try(Connection conn = sql2o.open()) {
-            conn.createQuery("DELETE * FROM empresa WHERE id=:id")
+            conn.createQuery("DELETE FROM empresa WHERE id=:id")
                 .addParameter("id", id)
                 .executeUpdate();
             return "Se borro la empresa";
@@ -64,13 +63,13 @@ public class EmpresaRepository {
     
     public String update(Empresa empresa, int id){
         try(Connection conn = sql2o.open()){
-            String updateSql = "UPDATE empresa SET empresa.nombre=:nombre" + 
-                    "WHERE id=:id";
+            String updateSql = "UPDATE empresa SET nombre=:nombre" + 
+                    " WHERE id=:id";
             conn.createQuery(updateSql)
                 .addParameter("id", id)
                 .addParameter("nombre", empresa.getNombre())
                 .executeUpdate();
-            return "Se actualizo el Empresa";
+            return "Se actualizo la Empresa";
         }catch (Exception e) {
             System.out.println(e.getMessage());
             return "Fallo al actualizar Empresa";

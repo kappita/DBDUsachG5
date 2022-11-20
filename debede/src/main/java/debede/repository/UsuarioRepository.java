@@ -64,7 +64,7 @@ public class UsuarioRepository {
     
     public void delete(int id) {
         try(Connection conn = sql2o.open()) {
-            conn.createQuery("DELETE * FROM usuario WHERE id = :id")
+            conn.createQuery("DELETE FROM usuario WHERE id = :id")
                 .addParameter("id", id)
                 .executeUpdate();
         } catch (Exception e) {
@@ -74,7 +74,7 @@ public class UsuarioRepository {
     
     public String update(Usuario usuario, int id){
         try(Connection conn = sql2o.open()){
-            String updateSql = "update empresa set nombre=:nombre, edad=:edad, " + 
+            String updateSql = "UPDATE empresa SET nombre=:nombre, edad=:edad, " + 
                     "correo=:correo, clave:=clave,direccion=:direccion WHERE id=:id";
             conn.createQuery(updateSql)
                 .addParameter("id", id)
