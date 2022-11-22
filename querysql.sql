@@ -4,7 +4,6 @@ DROP TABLE producto CASCADE;
 DROP TABLE transaccion CASCADE;
 DROP TABLE carrito CASCADE;
 DROP TABLE metodocompra CASCADE;
-DROP TABLE metcomtransa CASCADE;
 DROP TABLE valoracion CASCADE;
 DROP TABLE carroproducto CASCADE;
 DROP TABLE catproducto CASCADE;
@@ -34,14 +33,26 @@ create table if not exists usuario
  nombre varchar(30),
  precio int,
  stock int,
+ url varchar(200),
  id_empresa SERIAL,
  constraint fk_customer
  	foreign key(id_empresa)
 		references empresa(id));
+
+create table if not exists metodocompra
+(id SERIAL primary key,
+nombre_metodo varchar(30),
+tipo_pago varchar(30),
+tipo_cambio varchar(30));
+
 	
 create table if not exists transaccion
 (id SERIAL primary key,
-monto int);
+ id_metodo SERIAL,
+monto int,
+constraint fk_transaccion
+	foreign key(id_metodo)
+		references metodocompra(id));
 
 create table if not exists carrito
 (id SERIAL primary key,
@@ -53,24 +64,10 @@ constraint fk_carrito
 		references usuario(id),
 	foreign key (id_transaccion)
 		references transaccion(id));
-  
-create table if not exists metodocompra
-(id SERIAL primary key,
-nombre_metodo varchar(30),
-tipo_pago varchar(30),
-tipo_cambio varchar(30));
-
-create table if not exists metcomtransa
-(id_metodo SERIAL,
-id_transaccion SERIAL,
-constraint fk_metcomtransa
-	foreign key (id_metodo)
-		references metodocompra(id),
-	foreign key (id_transaccion)
-		references transaccion(id));
 		
 create table if not exists valoracion
-(id_user SERIAL,
+(id SERIAL primary key,
+id_user SERIAL,
 id_empresa SERIAL,
 puntuacion int,
 comentario varchar(200),
@@ -82,7 +79,8 @@ constraint fk_valoracion
 		references empresa(id));
 		
 create table if not exists carroproducto
-(id_carrito SERIAL,
+(id SERIAL primary key,
+id_carrito SERIAL,
 id_producto SERIAL,
 constraint fk_carroproducto
 	foreign key (id_carrito)
@@ -95,7 +93,8 @@ create table if not exists catproducto
 nombre varchar(50));
 
 create table if not exists catprodprod
-(id_catproducto SERIAL,
+(id SERIAL primary key,
+id_catproducto SERIAL,
 numero_serie SERIAL,
 constraint fk_catprodprod
 	foreign key (id_catproducto)
@@ -108,7 +107,8 @@ create table if not exists catempresa
 tipo_producto varchar(50));
 
 create table if not exists catempemp
-(id_empresa SERIAL,
+(id SERIAL primary key,
+id_empresa SERIAL,
 id_catempresa SERIAL,
 constraint fk_catempemp
 	foreign key (id_empresa)
@@ -127,12 +127,21 @@ INSERT INTO empresa VALUES(1, 'capcom@cap.com', '1234', 'CAPCOM', 'japón', Fals
 INSERT INTO empresa VALUES(2, 'savory@poto.cl', '1234', 'Savory', 'Chile', False);
 INSERT INTO empresa VALUES(3, 'rockstar@games.com', '1234', 'Rockstar', 'USA', True);
 
-INSERT INTO valoracion VALUES(1, 1, 10, 'weno juego', True);
-INSERT INTO valoracion VALUES(2, 1, 3, 'subieron los precios', False);
-INSERT INTO valoracion VALUES(1, 2, 8, 'rico helao', True);
-INSERT INTO valoracion VALUES(1, 3, 7, 'saquen gta vi', True);
-INSERT INTO valoracion VALUES(2, 2, 8, 'Helao', False);
-INSERT INTO valoracion VALUES(4, 3, 2, 'no tiene a miku', False);
+INSERT INTO valoracion VALUES(1, 1, 1, 10, 'weno juego', True);
+INSERT INTO valoracion VALUES(2, 2, 1, 3, 'subieron los precios', False);
+INSERT INTO valoracion VALUES(3, 1, 2, 8, 'rico helao', True);
+INSERT INTO valoracion VALUES(4, 1, 3, 7, 'saquen gta vi', True);
+INSERT INTO valoracion VALUES(5, 2, 2, 8, 'Helao', False);
+INSERT INTO valoracion VALUES(6, 4, 3, 2, 'no tiene a miku', False);
+
+INSERT INTO metodocompra VALUES(1, 'Efectivo', 'Presencial', 'Efectivo');
+INSERT INTO metodocompra VALUES(2, 'Transbank', 'Presencial', 'Digital');
+INSERT INTO metodocompra VALUES(3, 'Redcompra', 'Online', 'Digital');
+INSERT INTO metodocompra VALUES(4, 'Visa', 'Online', 'Digital');
+INSERT INTO metodocompra VALUES(5, 'Mastercard', 'Online', 'Digital');
 
 
-SELECT * FROM usuario INNER JOIN valoracion ON usuario.id = 2 AND usuario.id = valoracion.id_user;
+
+
+
+SELECT usuario.* FROM usuario, valoracion WHERE usuario.id = 2 AND usuario.id = valoracion.id_user;
