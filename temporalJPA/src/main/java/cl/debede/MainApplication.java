@@ -1,13 +1,13 @@
-package debede;
+package cl.debede;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication()
-public class DebedeApplication {
+@SpringBootApplication
+public class MainApplication {
 
 	public static void main(String[] args) {
-            SpringApplication.run(DebedeApplication.class, args);
+		SpringApplication.run(MainApplication.class, args);
 	}
 
 }
