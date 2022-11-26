@@ -30,13 +30,13 @@ public class EmpresaService {
             temp = show(id);
             temp.setNombre(empresa.getNombre());
             return "Empresa Actualizada";
-        } catch(Exception e){
-        return "No existe empresa con este ID";
+        }
+        catch(Exception e){
+            return "No existe empresa con este ID";
         }
     }
     
     public void delete(Long id) {
         empresaRepository.deleteById(id);
     }
-    
 }
