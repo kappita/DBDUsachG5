@@ -29,6 +29,10 @@ public class EmpresaService {
         try{
             temp = show(id);
             temp.setNombre(empresa.getNombre());
+            temp.setCorreo(empresa.getCorreo());
+            temp.setClave(empresa.getClave());
+            temp.setDireccion(empresa.getDireccion());
+            temp.setRestriccion_edad(empresa.isRestriccion_edad());
             return "Empresa Actualizada";
         }
         catch(Exception e){
@@ -36,7 +40,12 @@ public class EmpresaService {
         }
     }
     
-    public void delete(Long id) {
-        empresaRepository.deleteById(id);
+    public String delete(Long id) {
+        try{
+            empresaRepository.deleteById(id);
+            return "Empresa eliminada";
+        } catch (Exception e) {
+            return "No existe empresa con este ID";
+        }
     }
 }

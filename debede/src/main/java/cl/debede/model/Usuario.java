@@ -1,33 +1,34 @@
 package cl.debede.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "usuario")
 public class Usuario {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String nombre;
     private int edad;
     private String correo;
     private String clave;
     private String direccion;
+    @Column (name = "is_admin")
     private boolean admin;
-
-    public Usuario(Long id, String nombre, int edad, String correo, String clave, String direccion, boolean admin) {
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.correo = correo;
-        this.clave = clave;
-        this.direccion = direccion;
-        this.admin = admin;
+    
+    @OneToOne(mappedBy = "user")
+    private Carrito carrito;
+    
+    
+    public Usuario() {
     }
 
     public Long getId() {

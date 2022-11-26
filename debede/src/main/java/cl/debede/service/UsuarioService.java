@@ -29,6 +29,10 @@ public class UsuarioService {
         try {
             temp = show(id);
             temp.setNombre(usuario.getNombre());
+            temp.setEdad(usuario.getEdad());
+            temp.setCorreo(usuario.getCorreo());
+            temp.setClave(usuario.getClave());
+            temp.setDireccion(usuario.getDireccion());
             return "Usuario actualizado";
         }
         catch(Exception e) {
@@ -36,7 +40,12 @@ public class UsuarioService {
         }
     }
     
-    public void delete(Long id) {
-        usuarioRepository.deleteById(id);
+    public String delete(Long id) {
+        try{
+            usuarioRepository.deleteById(id);
+            return "Usuario Borrado";
+        } catch (Exception e){
+            return "No existe un usuario con este ID";
+        }
     }
 }

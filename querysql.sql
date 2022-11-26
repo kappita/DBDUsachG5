@@ -18,7 +18,7 @@ create table if not exists usuario
  nombre varchar(50), 
  direccion varchar(50),
  edad int, 
- is_admin bool);
+ is_admin boolean DEFAULT false);
  
  create table if not exists empresa
  (id SERIAL primary key,
@@ -48,27 +48,30 @@ tipo_cambio varchar(30));
 	
 create table if not exists transaccion
 (id SERIAL primary key,
- id_metodo SERIAL,
+id_metodo int,
 monto int,
 constraint fk_transaccion
+	unique(id_metodo),
 	foreign key(id_metodo)
 		references metodocompra(id));
 
 create table if not exists carrito
 (id SERIAL primary key,
-id_user SERIAL,
-id_transaccion SERIAL,
+id_user int,
+id_transaccion int,
 fecha TIMESTAMP,
 constraint fk_carrito
+	unique(id_user),
 	foreign key (id_user)
 		references usuario(id),
+	unique(id_transaccion),
 	foreign key (id_transaccion)
 		references transaccion(id));
 		
 create table if not exists valoracion
 (id SERIAL primary key,
-id_user SERIAL,
-id_empresa SERIAL,
+id_user int,
+id_empresa int,
 puntuacion int,
 comentario varchar(200),
 favorito bool,
@@ -80,8 +83,8 @@ constraint fk_valoracion
 		
 create table if not exists carroproducto
 (id SERIAL primary key,
-id_carrito SERIAL,
-id_producto SERIAL,
+id_carrito int,
+id_producto int,
 constraint fk_carroproducto
 	foreign key (id_carrito)
 		references carrito(id),
@@ -94,8 +97,8 @@ nombre varchar(50));
 
 create table if not exists catprodprod
 (id SERIAL primary key,
-id_catproducto SERIAL,
-numero_serie SERIAL,
+id_catproducto int,
+numero_serie int,
 constraint fk_catprodprod
 	foreign key (id_catproducto)
 		references catproducto(id),
@@ -108,8 +111,8 @@ tipo_producto varchar(50));
 
 create table if not exists catempemp
 (id SERIAL primary key,
-id_empresa SERIAL,
-id_catempresa SERIAL,
+id_empresa int,
+id_catempresa int,
 constraint fk_catempemp
 	foreign key (id_empresa)
 		references empresa(id),

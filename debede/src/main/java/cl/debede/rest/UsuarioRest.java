@@ -1,7 +1,7 @@
 package cl.debede.rest;
 
-import cl.debede.model.Empresa;
-import cl.debede.service.EmpresaService;
+import cl.debede.model.Usuario;
+import cl.debede.service.UsuarioService;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,41 +18,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/empresa")
-public class EmpresaRest {
+@RequestMapping("/usuario")
+public class UsuarioRest {
     
     @Autowired
-    private EmpresaService empresaService;
+    private UsuarioService usuarioService;
     
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Empresa> crear(@RequestBody Empresa empresa){
-        Empresa resultado = empresaService.create(empresa);
+    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario){
+        Usuario resultado = usuarioService.create(usuario);
         try {
-            return ResponseEntity.created(new URI("/empresa"+resultado.getId())).body(resultado);
+            return ResponseEntity.created(new URI("/usuario"+resultado.getId())).body(resultado);
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
     
     @GetMapping
-    public ResponseEntity<List<Empresa>> getAllUsuario(){
-        return ResponseEntity.ok(empresaService.getAll());
+    public ResponseEntity<List<Usuario>> getAllUsuario(){
+        return ResponseEntity.ok(usuarioService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getEmpresa(@PathVariable Long id){
-        return ResponseEntity.ok(empresaService.show(id));
+    public ResponseEntity<Usuario> getEmpresa(@PathVariable Long id){
+        return ResponseEntity.ok(usuarioService.show(id));
     }
     
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<String> update(@RequestBody Empresa empresa, @PathVariable Long id){
-        return ResponseEntity.ok(empresaService.update(empresa, id));
+    public ResponseEntity<String> update(@RequestBody Usuario usuario, @PathVariable Long id){
+        return ResponseEntity.ok(usuarioService.update(usuario, id));
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
-        return ResponseEntity.ok(empresaService.delete(id));
+        return ResponseEntity.ok(usuarioService.delete(id));
     }
 }
