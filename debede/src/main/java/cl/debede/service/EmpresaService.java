@@ -3,7 +3,6 @@ package cl.debede.service;
 import cl.debede.model.Empresa;
 import cl.debede.repository.EmpresaRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +24,15 @@ public class EmpresaService {
         return empresaRepository.findById(id).get();
     }
     
-    public String update(Empresa empresa) {
-        empresaRepository.save(empresa);
-        return "Empresa Actualizada";
+    public String update(Empresa empresa, Long id) {
+        Empresa temp;
+        try{
+            temp = show(id);
+            temp.setNombre(empresa.getNombre());
+            return "Empresa Actualizada";
+        } catch(Exception e){
+        return "No existe empresa con este ID";
+        }
     }
     
     public void delete(Long id) {

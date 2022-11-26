@@ -41,16 +41,14 @@ public class EmpresaRest {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Empresa> getUsuario(@PathVariable Long id){
+    public ResponseEntity<Empresa> getEmpresa(@PathVariable Long id){
         return ResponseEntity.ok(empresaService.show(id));
     }
     
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<String> getUsuario(@RequestBody Empresa empresa, @PathVariable Long id){
-        Empresa temp = empresaService.show(id);
-        temp.setNombre(empresa.getNombre());
-        return ResponseEntity.ok(empresaService.update(temp));
+    public ResponseEntity<String> update(@RequestBody Empresa empresa, @PathVariable Long id){
+        return ResponseEntity.ok(empresaService.update(empresa, id));
     }
     
     @DeleteMapping("/{id}")

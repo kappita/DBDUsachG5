@@ -11,10 +11,15 @@ import javax.persistence.Table;
 public class Empresa {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nombre;
+    private int edad;
+    private String correo;
+    private String clave;
+    private String direccion;
+    private boolean restriccion_edad;
 
     public Empresa() {
     }
