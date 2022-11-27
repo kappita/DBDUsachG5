@@ -1,7 +1,9 @@
 package cl.debede.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,8 +23,11 @@ public class Empresa {
     private String direccion;
     private boolean restriccion_edad;
     
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
+    private List<Producto> productos;
+    
     @OneToMany(mappedBy = "empresa")
-    List<Producto> productos;
+    private List<Valoracion> valoraciones;
 
     public Empresa() {
     }
@@ -73,6 +78,22 @@ public class Empresa {
 
     public void setRestriccion_edad(boolean restriccion_edad) {
         this.restriccion_edad = restriccion_edad;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public List<Valoracion> getValoraciones() {
+        return valoraciones;
+    }
+    
+    public void setValoraciones(List<Valoracion> valoraciones) {
+        this.valoraciones = valoraciones;
     }
     
 }
