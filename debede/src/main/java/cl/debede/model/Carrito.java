@@ -42,18 +42,10 @@ public class Carrito {
         this.id = id;
     }
 
-    public Usuario getUser() {
-        return usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
-
-    public void setUser(Usuario user) {
-        this.usuario = user;
-    }
-
-    public Transaccion getTransaccion() {
-        return transaccion;
-    }
-
+    
     public void setTransaccion(Transaccion transaccion) {
         this.transaccion = transaccion;
     }
@@ -61,9 +53,9 @@ public class Carrito {
     public LocalDate getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    
+
 }
