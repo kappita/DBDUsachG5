@@ -45,6 +45,11 @@ public class UsuarioRest {
         return ResponseEntity.ok(usuarioService.show(id));
     }
     
+    @GetMapping("/correo/{correo}")
+    public ResponseEntity<Usuario> getEmpresaNombre(@PathVariable String correo){
+        return ResponseEntity.ok(usuarioService.findByCorreo(correo));
+    }
+    
     @PutMapping("/{id}")
     @ResponseBody
     public ResponseEntity<String> update(@RequestBody Usuario usuario, @PathVariable Long id){

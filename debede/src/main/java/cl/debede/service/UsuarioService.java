@@ -48,4 +48,9 @@ public class UsuarioService {
             return "No existe un usuario con este ID";
         }
     }
+    
+    public Usuario findByCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo).get();
+    }
+    
 }
