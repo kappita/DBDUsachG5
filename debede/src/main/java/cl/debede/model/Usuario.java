@@ -1,11 +1,12 @@
 package cl.debede.model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +25,11 @@ public class Usuario {
     @Column (name = "is_admin")
     private boolean admin;
     
-    @OneToOne(mappedBy = "user")
-    private Carrito carrito;
+    @OneToMany(mappedBy = "usuario")
+    private List<Carrito> carrito;
     
+    @OneToMany(mappedBy = "usuario")
+    private List<Valoracion> valoraciones;
     
     public Usuario() {
     }
@@ -81,6 +84,22 @@ public class Usuario {
 
     public boolean isAdmin() {
         return admin;
+    }
+
+    public List<Carrito> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(List<Carrito> carrito) {
+        this.carrito = carrito;
+    }
+
+    public List<Valoracion> getValoraciones() {
+        return valoraciones;
+    }
+
+    public void setValoraciones(List<Valoracion> valoraciones) {
+        this.valoraciones = valoraciones;
     }
     
 }
