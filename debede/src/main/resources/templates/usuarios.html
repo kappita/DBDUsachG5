@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Tablas de usuario</title>
+</head>
+<body>
+    <h1> Usuarios existentes: </h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Correo</th>
+            <th>Clave</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Edad</th>
+        </tr>
+        <tr th:each="usuario: ${usuarios}">
+            <th th:text = "${usuario.id}">gwa</th>
+            <th th:text = "${usuario.correo}"}>gwa</th>
+            <th th:text = "${usuario.clave}">gwa</th>
+            <th th:text = "${usuario.nombre}">gwa</th>
+            <th th:text = "${usuario.direccion}">gwa</th>
+            <th th:text = "${usuario.edad}">gwa</th>
+        </tr>
+    </table>
+</body>
+</html>
