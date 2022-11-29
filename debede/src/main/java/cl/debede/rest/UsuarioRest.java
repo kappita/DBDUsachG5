@@ -46,11 +46,12 @@ public class UsuarioRest {
     }
     
     @GetMapping("/correo/{correo}")
-<<<<<<< HEAD
+
     public ResponseEntity<Usuario> getUsuarioCorreo(@PathVariable String correo){
-=======
+        return ResponseEntity.ok(usuarioService.findByCorreo(correo));
+    }
     public ResponseEntity<Usuario> getUsuarioNombre(@PathVariable String correo){
->>>>>>> b93665660c9bbb7260f17390856ad7dc407fbc65
+
         return ResponseEntity.ok(usuarioService.findByCorreo(correo));
     }
     
@@ -63,5 +64,9 @@ public class UsuarioRest {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.delete(id));
+    }
+    @GetMapping("/login")
+    public ResponseEntity<Usuario> logUsuario(@RequestBody Usuario loginRequest) {
+        return ResponseEntity.ok(usuarioService.login(loginRequest));
     }
 }
