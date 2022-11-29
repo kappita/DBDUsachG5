@@ -46,7 +46,11 @@ public class UsuarioRest {
     }
     
     @GetMapping("/correo/{correo}")
+<<<<<<< HEAD
     public ResponseEntity<Usuario> getUsuarioCorreo(@PathVariable String correo){
+=======
+    public ResponseEntity<Usuario> getUsuarioNombre(@PathVariable String correo){
+>>>>>>> b93665660c9bbb7260f17390856ad7dc407fbc65
         return ResponseEntity.ok(usuarioService.findByCorreo(correo));
     }
     
