@@ -33,6 +33,7 @@ public class EmpresaService {
             temp.setClave(empresa.getClave());
             temp.setDireccion(empresa.getDireccion());
             temp.setRestriccion_edad(empresa.isRestriccion_edad());
+            empresaRepository.save(temp);
             return "Empresa Actualizada";
         }
         catch(Exception e){

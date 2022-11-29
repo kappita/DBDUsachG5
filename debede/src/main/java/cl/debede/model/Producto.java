@@ -66,7 +66,11 @@ public class Producto {
     public void setUrl(String url) {
         this.url = url;
     }
-
+    
+    public Long getEmpresa() {
+        return empresa.getId();
+    }
+    
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }

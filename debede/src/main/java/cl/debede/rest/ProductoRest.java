@@ -36,12 +36,12 @@ public class ProductoRest {
     }
     
     @GetMapping
-    public ResponseEntity<List<Producto>> getAllUsuario(){
+    public ResponseEntity<List<Producto>> getAllProducto(){
         return ResponseEntity.ok(productoService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> getEmpresa(@PathVariable Long id){
+    public ResponseEntity<Producto> getProducto(@PathVariable Long id){
         return ResponseEntity.ok(productoService.show(id));
     }
     

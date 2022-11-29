@@ -74,7 +74,12 @@ public class Valoracion {
         this.empresa = empresa;
     }
     
+    public Long getEmpresa() {
+        return empresa.getId();
+    }
     
-    
+    public Long getUsuario() {
+        return usuario.getId();
+    }
     
 }

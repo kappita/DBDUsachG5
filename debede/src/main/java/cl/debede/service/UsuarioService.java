@@ -33,6 +33,7 @@ public class UsuarioService {
             temp.setCorreo(usuario.getCorreo());
             temp.setClave(usuario.getClave());
             temp.setDireccion(usuario.getDireccion());
+            usuarioRepository.save(temp);
             return "Usuario actualizado";
         }
         catch(Exception e) {

@@ -1,8 +1,7 @@
 package cl.debede.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +26,9 @@ public class Carrito {
     @OneToOne
     @JoinColumn(name = "id_transaccion")
     private Transaccion transaccion;
-    
-    @JsonFormat(pattern = "DD-MM-YYYY", shape = Shape.STRING)
-    private LocalDate fecha;
+        
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    private LocalDateTime fecha;
 
     public Carrito() {
     }
@@ -41,7 +40,7 @@ public class Carrito {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -50,12 +49,32 @@ public class Carrito {
         this.transaccion = transaccion;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
     
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
-
+    
+    // Retorna el id para Json
+    public Long getUsuario() {
+        return usuario.getId();
+    }
+    
+    // Retorna el usuario para trabajo interno
+    public Usuario userGet() {
+        return usuario;
+    }
+    
+    // Retorna el id para Json
+    public Long getTransaccion() {
+        return transaccion.getId();
+    }
+    
+    // Retorna la transaccion para trabajo interno
+    public Transaccion transaGet() {
+        return transaccion;
+    }
+    
 }

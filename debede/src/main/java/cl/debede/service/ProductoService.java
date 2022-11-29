@@ -32,6 +32,7 @@ public class ProductoService {
             temp.setPrecio(producto.getPrecio());
             temp.setStock(producto.getStock());
             temp.setUrl(producto.getUrl());
+            productoRepository.save(temp);
             return "Producto actualizado";
         }
         catch(Exception e){

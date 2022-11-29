@@ -61,7 +61,6 @@ id_user int,
 id_transaccion int,
 fecha TIMESTAMP,
 constraint fk_carrito
-	unique(id_user),
 	foreign key (id_user)
 		references usuario(id),
 	unique(id_transaccion),
@@ -118,33 +117,3 @@ constraint fk_catempemp
 		references empresa(id),
 	foreign key (id_catempresa)
 		references catempresa(id));
-
-
-
-INSERT INTO usuario VALUES(1, 'ignacio@lala.cl', '123', 'igansio', 'caloantune', 20, True);
-INSERT INTO usuario VALUES(2, 'kleful@chino.cl', '1234', 'kleful', 'nashi', 19, True);
-INSERT INTO usuario VALUES(3, 'lenecace@le.com', '1234', 'reno', 'nashe', 21, False);
-INSERT INTO usuario VALUES(4, 'pancho@menti.ra', '1234', 'francisco', 'poto', 19, False);
-
-INSERT INTO empresa VALUES(1, 'capcom@cap.com', '1234', 'CAPCOM', 'japón', False);
-INSERT INTO empresa VALUES(2, 'savory@poto.cl', '1234', 'Savory', 'Chile', False);
-INSERT INTO empresa VALUES(3, 'rockstar@games.com', '1234', 'Rockstar', 'USA', True);
-
-INSERT INTO valoracion VALUES(1, 1, 1, 10, 'weno juego', True);
-INSERT INTO valoracion VALUES(2, 2, 1, 3, 'subieron los precios', False);
-INSERT INTO valoracion VALUES(3, 1, 2, 8, 'rico helao', True);
-INSERT INTO valoracion VALUES(4, 1, 3, 7, 'saquen gta vi', True);
-INSERT INTO valoracion VALUES(5, 2, 2, 8, 'Helao', False);
-INSERT INTO valoracion VALUES(6, 4, 3, 2, 'no tiene a miku', False);
-
-INSERT INTO metodocompra VALUES(1, 'Efectivo', 'Presencial', 'Efectivo');
-INSERT INTO metodocompra VALUES(2, 'Transbank', 'Presencial', 'Digital');
-INSERT INTO metodocompra VALUES(3, 'Redcompra', 'Online', 'Digital');
-INSERT INTO metodocompra VALUES(4, 'Visa', 'Online', 'Digital');
-INSERT INTO metodocompra VALUES(5, 'Mastercard', 'Online', 'Digital');
-
-
-
-
-
-SELECT usuario.* FROM usuario, valoracion WHERE usuario.id = 2 AND usuario.id = valoracion.id_user;

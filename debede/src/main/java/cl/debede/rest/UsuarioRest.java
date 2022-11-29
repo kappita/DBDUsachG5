@@ -41,12 +41,12 @@ public class UsuarioRest {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getEmpresa(@PathVariable Long id){
+    public ResponseEntity<Usuario> getUsuario(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.show(id));
     }
     
     @GetMapping("/correo/{correo}")
-    public ResponseEntity<Usuario> getEmpresaNombre(@PathVariable String correo){
+    public ResponseEntity<Usuario> getUsuarioCorreo(@PathVariable String correo){
         return ResponseEntity.ok(usuarioService.findByCorreo(correo));
     }
     
