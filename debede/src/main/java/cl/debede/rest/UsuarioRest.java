@@ -46,16 +46,8 @@ public class UsuarioRest {
     }
     
     @GetMapping("/correo/{correo}")
-<<<<<<< HEAD
 
     public ResponseEntity<Usuario> getUsuarioCorreo(@PathVariable String correo){
-        return ResponseEntity.ok(usuarioService.findByCorreo(correo));
-    }
-    public ResponseEntity<Usuario> getUsuarioNombre(@PathVariable String correo){
-
-=======
-    public ResponseEntity<Usuario> getUsuarioCorreo(@PathVariable String correo){
->>>>>>> f3cc2b29b6cec544550ba6319d31953eca131ca0
         return ResponseEntity.ok(usuarioService.findByCorreo(correo));
     }
     
