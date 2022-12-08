@@ -23,8 +23,7 @@ public class Carrito {
     @JoinColumn(name = "id_user")
     private Usuario usuario;
     
-    @OneToOne
-    @JoinColumn(name = "id_transaccion")
+    @OneToOne(mappedBy = "carrito")
     private Transaccion transaccion;
         
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
@@ -67,13 +66,8 @@ public class Carrito {
         return usuario;
     }
     
-    // Retorna el id para Json
-    public Long getTransaccion() {
-        return transaccion.getId();
-    }
-    
     // Retorna la transaccion para trabajo interno
-    public Transaccion transaGet() {
+    public Transaccion getTransaccion() {
         return transaccion;
     }
     

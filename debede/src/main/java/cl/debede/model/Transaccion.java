@@ -18,7 +18,8 @@ public class Transaccion {
 
     private int monto;
     
-    @OneToOne(mappedBy = "transaccion")
+    @OneToOne
+    @JoinColumn(name = "id_carrito")
     private Carrito carrito;
     
     @ManyToOne
@@ -44,9 +45,11 @@ public class Transaccion {
         this.monto = monto;
     }
 
-    public Carrito getCarrito() {
-        return carrito;
+    public Long getCarrito() {
+        return carrito.getId();
     }
+
+    public Carrito carritoGet(){return carrito;}
 
     public void setCarrito(Carrito carrito) {
         this.carrito = carrito;

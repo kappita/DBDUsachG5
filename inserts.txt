@@ -27,17 +27,17 @@ INSERT INTO metodocompra(nombre_metodo, tipo_pago, tipo_cambio) VALUES('Redcompr
 INSERT INTO metodocompra(nombre_metodo, tipo_pago, tipo_cambio) VALUES('Efectivo', 'Presencial', 'Efectivo');
 INSERT INTO metodocompra(nombre_metodo, tipo_pago, tipo_cambio) VALUES('Visa', 'Online', 'Digital');
 
-INSERT INTO transaccion(id_metodo, monto) VALUES(4, 10300);
-INSERT INTO transaccion(id_metodo, monto) VALUES(2, 22000);
-INSERT INTO transaccion(id_metodo, monto) VALUES(5, 100);
-INSERT INTO transaccion(id_metodo, monto) VALUES(1, 45666);
-INSERT INTO transaccion(id_metodo, monto) VALUES(3, 50);
+INSERT INTO carrito(id_user) VALUES(5);
+INSERT INTO carrito(id_user) VALUES(4);
+INSERT INTO carrito(id_user) VALUES(3);
+INSERT INTO carrito(id_user) VALUES(2);
+INSERT INTO carrito(id_user) VALUES(1);
 
-INSERT INTO carrito(id_user, id_transaccion, fecha) VALUES(5, 1, '2022-01-02'::date);
-INSERT INTO carrito(id_user, id_transaccion, fecha) VALUES(4, 2, '2022-02-03'::date);
-INSERT INTO carrito(id_user, id_transaccion, fecha) VALUES(3, 3, '2022-03-04'::date);
-INSERT INTO carrito(id_user, id_transaccion, fecha) VALUES(2, 4, '2021-03-04'::date);
-INSERT INTO carrito(id_user, id_transaccion, fecha) VALUES(1, 5, '2021-01-01'::date);
+INSERT INTO transaccion(id_metodo, monto, fecha, id_carrito) VALUES(4, 10300, '2022-01-02 14:27:30'::timestamp, 5);
+INSERT INTO transaccion(id_metodo, monto, fecha, id_carrito) VALUES(2, 22000, '2022-02-03 17:48:18'::timestamp, 4);
+INSERT INTO transaccion(id_metodo, monto, fecha, id_carrito) VALUES(5, 100, '2022-03-04 15:20:24'::timestamp, 3);
+INSERT INTO transaccion(id_metodo, monto, fecha, id_carrito) VALUES(1, 45666, '2021-03-04 18:40:13'::timestamp, 2);
+INSERT INTO transaccion(id_metodo, monto, fecha, id_carrito) VALUES(3, 50 , '2021-01-01 13:23:35'::timestamp, 1);
 
 INSERT INTO valoracion(id_user, id_empresa, puntuacion, comentario, favorito) VALUES(1, 5, 5, 'Soy muy fan de cars, me encantan sus productos', true);
 INSERT INTO valoracion(id_user, id_empresa, puntuacion, comentario, favorito) VALUES(2, 4, 4, 'Me gusta marvel, pero se podría mejorar la calidad', true);
