@@ -3,7 +3,6 @@ package cl.debede.service;
 import cl.debede.model.Carrito;
 import cl.debede.repository.CarritoRepository;
 import java.util.List;
-import javax.persistence.PreUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +12,8 @@ public class CarritoService {
     @Autowired
     private CarritoRepository carritoRepository;
 
-    public Carrito create(Carrito empresa) {
-        return carritoRepository.save(empresa);
+    public Carrito create(Carrito carrito) {
+        return carritoRepository.save(carrito);
     }
     
     public List<Carrito> getAll() {
@@ -27,9 +26,8 @@ public class CarritoService {
     
     public String update(Carrito carrito, Long id) {
         Carrito temp;
-        try{temp = show(id);
-            System.out.println(temp.getFecha().toString());
-            System.out.println(carrito.getFecha().toString());
+        try {
+            temp = show(id);
             temp.setFecha(carrito.getFecha());
             if (carrito.transaGet() != null)
                 temp.setTransaccion(carrito.transaGet());
@@ -42,7 +40,7 @@ public class CarritoService {
     }
     
     public String delete(Long id) {
-        try{
+        try {
             carritoRepository.deleteById(id);
             return "Carrito eliminado";
         } catch (Exception e) {

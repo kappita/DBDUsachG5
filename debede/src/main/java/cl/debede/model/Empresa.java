@@ -28,6 +28,9 @@ public class Empresa {
     
     @OneToMany(mappedBy = "empresa")
     private List<Valoracion> valoraciones;
+    
+    @OneToMany(mappedBy = "empresa")
+    private List<CatEmpEmp> categorias;
 
     public Empresa() {
     }
@@ -94,6 +97,14 @@ public class Empresa {
     
     public void setValoraciones(List<Valoracion> valoraciones) {
         this.valoraciones = valoraciones;
+    }
+
+    public List<CatEmpEmp> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<CatEmpEmp> categorias) {
+        this.categorias = categorias;
     }
     
 }

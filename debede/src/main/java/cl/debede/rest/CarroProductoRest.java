@@ -1,7 +1,7 @@
 package cl.debede.rest;
 
-import cl.debede.model.Usuario;
-import cl.debede.service.UsuarioService;
+import cl.debede.model.CarroProducto;
+import cl.debede.service.CarroProductoService;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,42 +18,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioRest {
-    
+@RequestMapping("/carroproducto")
+public class CarroProductoRest {
     @Autowired
-    private UsuarioService usuarioService;
+    private CarroProductoService carroProductoService;
     
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario){
-        Usuario resultado = usuarioService.create(usuario);
+    public ResponseEntity<CarroProducto> crear(@RequestBody CarroProducto carroProducto){
+        CarroProducto resultado = carroProductoService.create(carroProducto);
         try {
-            return ResponseEntity.created(new URI("/usuario"+resultado.getId())).body(resultado);
+            return ResponseEntity.created(new URI("/carroproducto"+resultado.getId())).body(resultado);
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
     
     @GetMapping
-    public ResponseEntity<List<Usuario>> getAllUsuario(){
-        return ResponseEntity.ok(usuarioService.getAll());
+    public ResponseEntity<List<CarroProducto>> getAllCarrito(){
+        return ResponseEntity.ok(carroProductoService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getUsuario(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.show(id));
+    public ResponseEntity<CarroProducto> getCarrito(@PathVariable Long id){
+        return ResponseEntity.ok(carroProductoService.show(id));
     }
     
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<String> update(@RequestBody Usuario usuario, @PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.update(usuario, id));
+    public ResponseEntity<String> update(@RequestBody CarroProducto carroProducto, @PathVariable Long id){
+        return ResponseEntity.ok(carroProductoService.update(carroProducto, id));
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.delete(id));
+        return ResponseEntity.ok(carroProductoService.delete(id));
     }
-    
 }

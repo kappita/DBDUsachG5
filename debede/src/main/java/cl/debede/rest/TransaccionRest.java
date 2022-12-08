@@ -1,7 +1,7 @@
 package cl.debede.rest;
 
-import cl.debede.model.Usuario;
-import cl.debede.service.UsuarioService;
+import cl.debede.model.Transaccion;
+import cl.debede.service.TransaccionService;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,42 +18,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuario")
-public class UsuarioRest {
-    
+@RequestMapping("/transaccion")
+public class TransaccionRest {
     @Autowired
-    private UsuarioService usuarioService;
+    private TransaccionService carritoService;
     
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario){
-        Usuario resultado = usuarioService.create(usuario);
+    public ResponseEntity<Transaccion> crear(@RequestBody Transaccion transaccion){
+        Transaccion resultado = carritoService.create(transaccion);
         try {
-            return ResponseEntity.created(new URI("/usuario"+resultado.getId())).body(resultado);
+            return ResponseEntity.created(new URI("/transaccion"+resultado.getId())).body(resultado);
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
     
     @GetMapping
-    public ResponseEntity<List<Usuario>> getAllUsuario(){
-        return ResponseEntity.ok(usuarioService.getAll());
+    public ResponseEntity<List<Transaccion>> getAllCarrito(){
+        return ResponseEntity.ok(carritoService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getUsuario(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.show(id));
+    public ResponseEntity<Transaccion> getCarrito(@PathVariable Long id){
+        return ResponseEntity.ok(carritoService.show(id));
     }
     
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<String> update(@RequestBody Usuario usuario, @PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.update(usuario, id));
+    public ResponseEntity<String> update(@RequestBody Transaccion transaccion, @PathVariable Long id){
+        return ResponseEntity.ok(carritoService.update(transaccion, id));
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.delete(id));
+        return ResponseEntity.ok(carritoService.delete(id));
     }
-    
 }

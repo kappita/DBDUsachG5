@@ -50,17 +50,4 @@ public class UsuarioService {
         }
     }
     
-    public Usuario findByCorreo(String correo) {
-        return usuarioRepository.findByCorreo(correo).get();
-    }
-    
-    public Usuario login(Usuario usuario) {
-        Usuario user = usuarioRepository.findByCorreo(usuario.getCorreo()).get();
-        if (usuario.getClave().equals(user.getClave())) {
-            return user;
-        }
-        else {
-            return null;
-        }
-    }
 }
