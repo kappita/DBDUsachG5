@@ -23,17 +23,6 @@ public class CatProdProdService {
         return catProdProdRepository.findById(id).get();
     }
     
-    public String update(CatProdProd catProdProd, Long id) {
-        CatProdProd temp;
-        try {
-            temp = show(id);
-            return "CatProdProd Actualizado";
-        }
-        catch(Exception e){
-            return "No existe CatProdProd con este ID";
-        }
-    }
-    
     public String delete(Long id) {
         try {
             catProdProdRepository.deleteById(id);

@@ -44,12 +44,6 @@ public class CatProdProdRest {
         return ResponseEntity.ok(catProdProdService.show(id));
     }
     
-    @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> update(@RequestBody CatProdProd catProdProd, @PathVariable Long id){
-        return ResponseEntity.ok(catProdProdService.update(catProdProd, id));
-    }
-    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
         return ResponseEntity.ok(catProdProdService.delete(id));

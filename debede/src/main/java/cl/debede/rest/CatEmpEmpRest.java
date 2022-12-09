@@ -44,12 +44,6 @@ public class CatEmpEmpRest {
         return ResponseEntity.ok(catEmpEmpService.show(id));
     }
     
-    @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> update(@RequestBody CatEmpEmp catEmpEmp, @PathVariable Long id){
-        return ResponseEntity.ok(catEmpEmpService.update(catEmpEmp, id));
-    }
-    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
         return ResponseEntity.ok(catEmpEmpService.delete(id));

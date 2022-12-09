@@ -23,18 +23,6 @@ public class CarroProductoService {
         return carroProductoRepository.findById(id).get();
     }
     
-    // Se deja pendiente
-    public String update(CarroProducto carroProducto, Long id) {
-        CarroProducto temp;
-        try {
-            temp = show(id);
-            return "CarroProducto Actualizado";
-        }
-        catch(Exception e){
-            return "No existe CarroProducto con este ID";
-        }
-    }
-    
     public String delete(Long id) {
         try {
             carroProductoRepository.deleteById(id);

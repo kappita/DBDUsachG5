@@ -44,12 +44,6 @@ public class CarroProductoRest {
         return ResponseEntity.ok(carroProductoService.show(id));
     }
     
-    @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> update(@RequestBody CarroProducto carroProducto, @PathVariable Long id){
-        return ResponseEntity.ok(carroProductoService.update(carroProducto, id));
-    }
-    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id){
         return ResponseEntity.ok(carroProductoService.delete(id));
