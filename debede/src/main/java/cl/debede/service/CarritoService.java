@@ -28,9 +28,8 @@ public class CarritoService {
         Carrito temp;
         try {
             temp = show(id);
-            temp.setFecha(carrito.getFecha());
-            if (carrito.transaGet() != null)
-                temp.setTransaccion(carrito.transaGet());
+            if (carrito.getTransaccion()!= null)
+                temp.setTransaccion(carrito.getTransaccion());
             carritoRepository.save(temp);
             return "Carrito Actualizado";
         }

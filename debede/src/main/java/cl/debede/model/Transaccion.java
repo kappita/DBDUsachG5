@@ -1,5 +1,7 @@
 package cl.debede.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,9 @@ public class Transaccion {
     private Long id;
 
     private int monto;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    private LocalDateTime fecha;
     
     @OneToOne
     @JoinColumn(name = "id_carrito")
@@ -45,11 +50,21 @@ public class Transaccion {
         this.monto = monto;
     }
 
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+    
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+    
     public Long getCarrito() {
         return carrito.getId();
     }
 
-    public Carrito carritoGet(){return carrito;}
+    public Carrito carritoGet(){
+        return carrito;
+    }
 
     public void setCarrito(Carrito carrito) {
         this.carrito = carrito;

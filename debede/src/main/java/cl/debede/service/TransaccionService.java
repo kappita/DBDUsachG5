@@ -28,6 +28,7 @@ public class TransaccionService {
         Transaccion temp;
         try{
             temp = show(id);
+            temp.setFecha(transaccion.getFecha());
             temp.setMonto(transaccion.getMonto());
             transaccionRepository.save(temp);
             return "Transaccion actualizada";

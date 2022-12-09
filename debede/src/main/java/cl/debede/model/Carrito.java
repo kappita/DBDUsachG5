@@ -1,6 +1,5 @@
 package cl.debede.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +24,6 @@ public class Carrito {
     
     @OneToOne(mappedBy = "carrito")
     private Transaccion transaccion;
-        
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
-    private LocalDateTime fecha;
 
     public Carrito() {
     }
@@ -48,14 +44,6 @@ public class Carrito {
         this.transaccion = transaccion;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-    
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-    
     // Retorna el id para Json
     public Long getUsuario() {
         return usuario.getId();
