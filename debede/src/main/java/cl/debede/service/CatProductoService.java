@@ -27,6 +27,7 @@ public class CatProductoService {
         CatProducto temp;
         try {
             temp = show(id);
+            catProductoRepository.save(temp);
             return "CatProducto Actualizado";
         }
         catch(Exception e){

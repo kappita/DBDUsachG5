@@ -35,12 +35,12 @@ public class ValoracionRest {
     }
     
     @GetMapping
-    public ResponseEntity<List<Valoracion>> getAllCarrito(){
+    public ResponseEntity<List<Valoracion>> getAllValoracion(){
         return ResponseEntity.ok(valoracionService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Valoracion> getCarrito(@PathVariable Long id){
+    public ResponseEntity<Valoracion> getValoracion(@PathVariable Long id){
         return ResponseEntity.ok(valoracionService.show(id));
     }
     

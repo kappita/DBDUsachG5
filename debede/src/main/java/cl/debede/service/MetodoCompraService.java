@@ -30,6 +30,7 @@ public class MetodoCompraService {
             temp.setNombre_metodo(metodoCompra.getNombre_metodo());
             temp.setTipo_cambio(metodoCompra.getTipo_cambio());
             temp.setTipo_pago(metodoCompra.getTipo_pago());
+            metodoCompraRepository.save(temp);
             return "MetodoCompra Actualizado";
         }
         catch(Exception e){

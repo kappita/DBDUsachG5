@@ -35,12 +35,12 @@ public class CatEmpresaRest {
     }
     
     @GetMapping
-    public ResponseEntity<List<CatEmpresa>> getAllCarrito(){
+    public ResponseEntity<List<CatEmpresa>> getAllCatEmpresa(){
         return ResponseEntity.ok(catEmpresaService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<CatEmpresa> getCarrito(@PathVariable Long id){
+    public ResponseEntity<CatEmpresa> getCatEmpresa(@PathVariable Long id){
         return ResponseEntity.ok(catEmpresaService.show(id));
     }
     

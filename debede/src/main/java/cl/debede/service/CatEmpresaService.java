@@ -28,6 +28,7 @@ public class CatEmpresaService {
         try {
             temp = show(id);
             temp.setTipo_producto(catEmpresa.getTipo_producto());
+            catEmpresaRepository.save(temp);
             return "Categoria Empresa Actualizada";
         }
         catch(Exception e){

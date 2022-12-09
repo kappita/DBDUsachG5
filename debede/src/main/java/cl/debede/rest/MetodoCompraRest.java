@@ -35,12 +35,12 @@ public class MetodoCompraRest {
     }
     
     @GetMapping
-    public ResponseEntity<List<MetodoCompra>> getAllCarrito(){
+    public ResponseEntity<List<MetodoCompra>> getAllMetodoCompra(){
         return ResponseEntity.ok(metodoCompraService.getAll());
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<MetodoCompra> getCarrito(@PathVariable Long id){
+    public ResponseEntity<MetodoCompra> getMetodoCompra(@PathVariable Long id){
         return ResponseEntity.ok(metodoCompraService.show(id));
     }
     

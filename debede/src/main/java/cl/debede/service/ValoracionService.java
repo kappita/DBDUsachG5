@@ -30,6 +30,7 @@ public class ValoracionService {
             temp.setFavorito(valoracion.isFavorito());
             temp.setComentario(valoracion.getComentario());
             temp.setPuntuacion(valoracion.getPuntuacion());
+            valoracionRepository.save(temp);
             return "Valoracion Actualizada";
         }
         catch(Exception e){
