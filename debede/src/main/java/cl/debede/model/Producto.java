@@ -13,16 +13,16 @@ import javax.persistence.Table;
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     
-    String nombre;
-    int precio;
-    int stock;
-    String url;
+    private String nombre;
+    private int precio;
+    private int stock;
+    private String url;
     
     @ManyToOne
     @JoinColumn(name = "id_empresa")
-    Empresa empresa;
+    private Empresa empresa;
 
     public Producto() {
     }

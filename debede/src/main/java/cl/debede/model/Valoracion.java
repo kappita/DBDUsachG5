@@ -17,19 +17,19 @@ import javax.persistence.Table;
 public class Valoracion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
-    int puntuacion;
-    String comentario;
-    boolean favorito;
+    private int puntuacion;
+    private String comentario;
+    private boolean favorito;
     
     @ManyToOne
     @JoinColumn(name = "id_user")
-    Usuario usuario;
+    private Usuario usuario;
     
     @ManyToOne
     @JoinColumn(name = "id_empresa")
-    Empresa empresa;
+    private Empresa empresa;
     
     public Valoracion() {
     }

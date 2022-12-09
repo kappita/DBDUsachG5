@@ -20,7 +20,7 @@ public class MetodoCompra {
     private String tipo_cambio;
     
     @OneToMany(mappedBy = "metodoCompra")
-    List<Transaccion> transacciones;
+    private List<Transaccion> transacciones;
 
     public MetodoCompra() {
     }
