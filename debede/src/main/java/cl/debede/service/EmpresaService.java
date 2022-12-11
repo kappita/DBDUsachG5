@@ -32,11 +32,16 @@ public class EmpresaService {
         Empresa temp;
         try{
             temp = show(id);
-            temp.setNombre(empresa.getNombre());
-            temp.setCorreo(empresa.getCorreo());
-            temp.setClave(empresa.getClave());
-            temp.setDireccion(empresa.getDireccion());
-            temp.setRestriccion_edad(empresa.isRestriccion_edad());
+            if(empresa.getNombre() != null)
+                temp.setNombre(empresa.getNombre());
+            if(empresa.getCorreo()!= null)
+                temp.setCorreo(empresa.getCorreo());
+            if(empresa.getClave()!= null)
+                temp.setClave(empresa.getClave());
+            if(empresa.getDireccion()!= null)
+                temp.setDireccion(empresa.getDireccion());
+            if(empresa.isRestriccion_edad() != temp.isRestriccion_edad())
+                temp.setRestriccion_edad(empresa.isRestriccion_edad());
             empresaRepository.save(temp);
             return "Empresa Actualizada";
         }

@@ -31,6 +31,8 @@ public class CatProductoService {
         CatProducto temp;
         try {
             temp = show(id);
+            if(catProducto.getNombre() != null)
+                temp.setNombre(catProducto.getNombre());
             catProductoRepository.save(temp);
             return "CatProducto Actualizado";
         }

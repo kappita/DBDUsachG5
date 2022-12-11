@@ -32,11 +32,16 @@ public class UsuarioService {
         Usuario temp;
         try {
             temp = show(id);
-            temp.setNombre(usuario.getNombre());
-            temp.setEdad(usuario.getEdad());
-            temp.setCorreo(usuario.getCorreo());
-            temp.setClave(usuario.getClave());
-            temp.setDireccion(usuario.getDireccion());
+            if(usuario.getNombre() != null)
+                temp.setNombre(usuario.getNombre());
+            if(usuario.getEdad() <= 0)
+                temp.setEdad(usuario.getEdad());
+            if(usuario.getCorreo() != null)
+                temp.setCorreo(usuario.getCorreo());
+            if(usuario.getClave() != null)
+                temp.setClave(usuario.getClave());
+            if(usuario.getDireccion() != null)
+                temp.setDireccion(usuario.getDireccion());
             usuarioRepository.save(temp);
             return "Usuario actualizado";
         }

@@ -32,10 +32,14 @@ public class ProductoService {
         Producto temp;
         try{
             temp = show(id);
-            temp.setNombre(producto.getNombre());
-            temp.setPrecio(producto.getPrecio());
-            temp.setStock(producto.getStock());
-            temp.setUrl(producto.getUrl());
+            if(producto.getNombre() != null)
+                temp.setNombre(producto.getNombre());
+            if(producto.getPrecio() <= 0)
+                temp.setPrecio(producto.getPrecio());
+            if(producto.getStock()<= 0)
+                temp.setStock(producto.getStock());
+            if(producto.getUrl() != null)
+                temp.setUrl(producto.getUrl());
             productoRepository.save(temp);
             return "Producto actualizado";
         }

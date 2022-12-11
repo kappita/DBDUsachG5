@@ -41,9 +41,12 @@ public class ValoracionService {
         Valoracion temp;
         try {
             temp = show(id);
-            temp.setFavorito(valoracion.isFavorito());
-            temp.setComentario(valoracion.getComentario());
-            temp.setPuntuacion(valoracion.getPuntuacion());
+            if(valoracion.isFavorito()!= temp.isFavorito())
+                temp.setFavorito(valoracion.isFavorito());
+            if(valoracion.getComentario() != null)
+                temp.setComentario(valoracion.getComentario());
+            if(valoracion.getPuntuacion()<= 0)
+                temp.setPuntuacion(valoracion.getPuntuacion());
             valoracionRepository.save(temp);
             return "Valoracion Actualizada";
         }
