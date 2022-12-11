@@ -18,7 +18,7 @@ public class Transaccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int monto;
+    private Integer monto;
     
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime fecha;
@@ -42,7 +42,7 @@ public class Transaccion {
         this.id = id;
     }
 
-    public int getMonto() {
+    public Integer getMonto() {
         return monto;
     }
 

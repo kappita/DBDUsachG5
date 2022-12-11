@@ -16,8 +16,8 @@ public class Producto {
     private Long id;
     
     private String nombre;
-    private int precio;
-    private int stock;
+    private Integer precio;
+    private Integer stock;
     private String url;
     
     @ManyToOne
@@ -43,7 +43,7 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getPrecio() {
+    public Integer getPrecio() {
         return precio;
     }
 
@@ -51,7 +51,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 

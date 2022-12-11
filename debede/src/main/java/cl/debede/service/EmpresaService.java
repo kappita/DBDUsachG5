@@ -40,7 +40,7 @@ public class EmpresaService {
                 temp.setClave(empresa.getClave());
             if(empresa.getDireccion()!= null)
                 temp.setDireccion(empresa.getDireccion());
-            if(empresa.isRestriccion_edad() != temp.isRestriccion_edad())
+            if(empresa.isRestriccion_edad() != null)
                 temp.setRestriccion_edad(empresa.isRestriccion_edad());
             empresaRepository.save(temp);
             return "Empresa Actualizada";

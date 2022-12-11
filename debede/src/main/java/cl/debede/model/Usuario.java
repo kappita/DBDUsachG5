@@ -18,7 +18,7 @@ public class Usuario {
     private Long id;
     
     private String nombre;
-    private int edad;
+    private Integer edad;
     private String correo;
     private String clave;
     private String direccion;
@@ -50,7 +50,7 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
@@ -82,7 +82,7 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public boolean isAdmin() {
+    public Boolean isAdmin() {
         return admin;
     }
 

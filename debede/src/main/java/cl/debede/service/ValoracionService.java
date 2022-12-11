@@ -41,7 +41,7 @@ public class ValoracionService {
         Valoracion temp;
         try {
             temp = show(id);
-            if(valoracion.isFavorito()!= temp.isFavorito())
+            if(valoracion.isFavorito()!= null)
                 temp.setFavorito(valoracion.isFavorito());
             if(valoracion.getComentario() != null)
                 temp.setComentario(valoracion.getComentario());

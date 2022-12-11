@@ -30,7 +30,7 @@ public class TransaccionService {
             temp = show(id);
             if(transaccion.getFecha() != null)
                 temp.setFecha(transaccion.getFecha());
-            if(transaccion.getMonto() <= 0)
+            if(transaccion.getMonto() != null)
                 temp.setMonto(transaccion.getMonto());
             transaccionRepository.save(temp);
             return "Transaccion actualizada";

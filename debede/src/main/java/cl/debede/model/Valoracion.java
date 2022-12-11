@@ -19,9 +19,9 @@ public class Valoracion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int puntuacion;
+    private Integer puntuacion;
     private String comentario;
-    private boolean favorito;
+    private Boolean favorito;
     
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -42,7 +42,7 @@ public class Valoracion {
         this.id = id;
     }
 
-    public int getPuntuacion() {
+    public Integer getPuntuacion() {
         return puntuacion;
     }
 
@@ -58,7 +58,7 @@ public class Valoracion {
         this.comentario = comentario;
     }
 
-    public boolean isFavorito() {
+    public Boolean isFavorito() {
         return favorito;
     }
 

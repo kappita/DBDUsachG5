@@ -34,7 +34,7 @@ public class UsuarioService {
             temp = show(id);
             if(usuario.getNombre() != null)
                 temp.setNombre(usuario.getNombre());
-            if(usuario.getEdad() <= 0)
+            if(usuario.getEdad() != null)
                 temp.setEdad(usuario.getEdad());
             if(usuario.getCorreo() != null)
                 temp.setCorreo(usuario.getCorreo());

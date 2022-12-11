@@ -34,9 +34,9 @@ public class ProductoService {
             temp = show(id);
             if(producto.getNombre() != null)
                 temp.setNombre(producto.getNombre());
-            if(producto.getPrecio() <= 0)
+            if(producto.getPrecio() != null)
                 temp.setPrecio(producto.getPrecio());
-            if(producto.getStock()<= 0)
+            if(producto.getStock() != null)
                 temp.setStock(producto.getStock());
             if(producto.getUrl() != null)
                 temp.setUrl(producto.getUrl());

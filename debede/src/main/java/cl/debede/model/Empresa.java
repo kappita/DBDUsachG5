@@ -21,7 +21,7 @@ public class Empresa {
     private String correo;
     private String clave;
     private String direccion;
-    private boolean restriccion_edad;
+    private Boolean restriccion_edad;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
     private List<Producto> productos;
@@ -75,7 +75,7 @@ public class Empresa {
         this.direccion = direccion;
     }
 
-    public boolean isRestriccion_edad() {
+    public Boolean isRestriccion_edad() {
         return restriccion_edad;
     }
 
