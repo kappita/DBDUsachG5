@@ -24,6 +24,10 @@ public class UsuarioService {
         return usuarioRepository.findById(id).get();
     }
     
+    public List<Usuario> showName(String nombre) {
+        return usuarioRepository.findByNombre(nombre);
+    }
+    
     public String update(Usuario usuario, Long id) {
         Usuario temp;
         try {

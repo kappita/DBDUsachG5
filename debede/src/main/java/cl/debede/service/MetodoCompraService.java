@@ -23,6 +23,10 @@ public class MetodoCompraService {
         return metodoCompraRepository.findById(id).get();
     }
     
+    public MetodoCompra showName(String nombre) {
+        return metodoCompraRepository.findByNombreMetodo(nombre).get();
+    }
+    
     public String update(MetodoCompra metodoCompra, Long id) {
         MetodoCompra temp;
         try {

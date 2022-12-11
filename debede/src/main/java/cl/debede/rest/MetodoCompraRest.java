@@ -44,6 +44,11 @@ public class MetodoCompraRest {
         return ResponseEntity.ok(metodoCompraService.show(id));
     }
     
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<MetodoCompra> getMetodoCompraName(@PathVariable String nombre){
+        return ResponseEntity.ok(metodoCompraService.showName(nombre));
+    }
+    
     @PutMapping("/{id}")
     @ResponseBody
     public ResponseEntity<String> update(@RequestBody MetodoCompra metodoCompra, @PathVariable Long id){

@@ -24,6 +24,10 @@ public class EmpresaService {
         return empresaRepository.findById(id).get();
     }
     
+    public List<Empresa> showName(String nombre) {
+        return empresaRepository.findByNombre(nombre);
+    }
+    
     public String update(Empresa empresa, Long id) {
         Empresa temp;
         try{

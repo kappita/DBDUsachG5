@@ -1,5 +1,7 @@
 package cl.debede.service;
 
+import cl.debede.model.Empresa;
+import cl.debede.model.Usuario;
 import cl.debede.model.Valoracion;
 import cl.debede.repository.ValoracionRepository;
 import java.util.List;
@@ -12,7 +14,15 @@ public class ValoracionService {
     private ValoracionRepository valoracionRepository;
 
     public Valoracion create(Valoracion valoracion) {
-        return valoracionRepository.save(valoracion);
+        try { // se verifica que exista anteriormente para actualizarla
+            Valoracion temp = showUserAndEmpress(valoracion.usuarioGet(), valoracion.empresaGet());
+            temp.setComentario(valoracion.getComentario());
+            temp.setFavorito(valoracion.isFavorito());
+            temp.setPuntuacion(valoracion.getPuntuacion());
+            return valoracionRepository.save(temp);
+        } catch (Exception e) {
+            return valoracionRepository.save(valoracion);
+        }
     }
     
     public List<Valoracion> getAll() {
@@ -21,6 +31,10 @@ public class ValoracionService {
     
     public Valoracion show(Long id) {
         return valoracionRepository.findById(id).get();
+    }
+    
+    public Valoracion showUserAndEmpress(Usuario user, Empresa empress) {
+        return valoracionRepository.findByUsuarioAndEmpresa(user, empress).get();
     }
     
     public String update(Valoracion valoracion, Long id) {

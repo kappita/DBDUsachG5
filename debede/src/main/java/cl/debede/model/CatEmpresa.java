@@ -1,6 +1,7 @@
 package cl.debede.model;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class CatEmpresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String tipo_producto;
+    @Column(name = "tipo_producto")
+    private String tipoProducto;
     
     @OneToMany(mappedBy = "catEmpresa")
     private List<CatEmpEmp> catempemp;
@@ -32,11 +34,11 @@ public class CatEmpresa {
     }
 
     public String getTipo_producto() {
-        return tipo_producto;
+        return tipoProducto;
     }
 
     public void setTipo_producto(String tipo_producto) {
-        this.tipo_producto = tipo_producto;
+        this.tipoProducto = tipo_producto;
     }
 
     public List<CatEmpEmp> getCatempemp() {

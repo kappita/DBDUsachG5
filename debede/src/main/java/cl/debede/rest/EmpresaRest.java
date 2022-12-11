@@ -45,6 +45,11 @@ public class EmpresaRest {
         return ResponseEntity.ok(empresaService.show(id));
     }
     
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Empresa>> getEmpresaName(@PathVariable String nombre){
+        return ResponseEntity.ok(empresaService.showName(nombre));
+    }
+    
     @PutMapping("/{id}")
     @ResponseBody
     public ResponseEntity<String> update(@RequestBody Empresa empresa, @PathVariable Long id){

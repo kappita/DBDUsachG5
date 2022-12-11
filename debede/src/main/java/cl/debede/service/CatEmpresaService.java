@@ -23,6 +23,10 @@ public class CatEmpresaService {
         return catEmpresaRepository.findById(id).get();
     }
     
+    public CatEmpresa showName(String nombre) {
+        return catEmpresaRepository.findByTipoProducto(nombre).get();
+    }
+    
     public String update(CatEmpresa catEmpresa ,Long id) {
         CatEmpresa temp;
         try {

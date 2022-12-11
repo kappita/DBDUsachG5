@@ -78,8 +78,15 @@ public class Valoracion {
         return empresa.getId();
     }
     
+    public Empresa empresaGet() {
+        return empresa;
+    }
+    
     public Long getUsuario() {
         return usuario.getId();
     }
     
+    public Usuario usuarioGet() {
+        return usuario;
+    }
 }

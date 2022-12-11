@@ -45,6 +45,11 @@ public class UsuarioRest {
         return ResponseEntity.ok(usuarioService.show(id));
     }
     
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Usuario>> getUsuarioName(@PathVariable String nombre){
+        return ResponseEntity.ok(usuarioService.showName(nombre));
+    }
+    
     @PutMapping("/{id}")
     @ResponseBody
     public ResponseEntity<String> update(@RequestBody Usuario usuario, @PathVariable Long id){

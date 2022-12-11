@@ -24,6 +24,10 @@ public class ProductoService {
         return productoRepository.findById(id).get();
     }
     
+    public List<Producto> showName(String nombre) {
+        return productoRepository.findByNombre(nombre);
+    }
+    
     public String update(Producto producto, Long id) {
         Producto temp;
         try{

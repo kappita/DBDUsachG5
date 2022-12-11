@@ -1,6 +1,7 @@
 package cl.debede.model;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class MetodoCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String nombre_metodo;
+    @Column(name = "nombre_metodo")
+    private String nombreMetodo;
     private String tipo_pago;
     private String tipo_cambio;
     
@@ -34,11 +36,11 @@ public class MetodoCompra {
     }
 
     public String getNombre_metodo() {
-        return nombre_metodo;
+        return nombreMetodo;
     }
 
     public void setNombre_metodo(String nombre_metodo) {
-        this.nombre_metodo = nombre_metodo;
+        this.nombreMetodo = nombre_metodo;
     }
 
     public String getTipo_pago() {
