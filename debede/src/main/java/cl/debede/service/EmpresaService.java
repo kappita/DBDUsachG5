@@ -20,6 +20,10 @@ public class EmpresaService {
         return empresaRepository.findAll();
     }
     
+    public List<Empresa> getMinor() {
+        return empresaRepository.findByRestriccionEdad(Boolean.FALSE);
+    }
+    
     public Empresa show(Long id) {
         return empresaRepository.findById(id).get();
     }

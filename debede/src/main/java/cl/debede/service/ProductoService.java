@@ -1,5 +1,6 @@
 package cl.debede.service;
 
+import cl.debede.model.Empresa;
 import cl.debede.model.Producto;
 import cl.debede.repository.ProductoRepository;
 import java.util.List;
@@ -18,6 +19,12 @@ public class ProductoService {
     
     public List<Producto> getAll() {
         return productoRepository.findAll();
+    }
+    
+    public List<Producto> getByEmpresa(Long id) {
+        Empresa emp = new Empresa();
+        emp.setId(id);
+        return productoRepository.findByEmpresa(emp);
     }
     
     public Producto show(Long id) {

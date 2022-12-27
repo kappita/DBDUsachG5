@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/empresa")
@@ -38,6 +39,28 @@ public class EmpresaRest {
     @GetMapping
     public ResponseEntity<List<Empresa>> getAllEmpresa(){
         return ResponseEntity.ok(empresaService.getAll());
+    }
+    
+    @GetMapping("/getall")
+    public RedirectView getEmpresa(){
+        RedirectView redirect = new RedirectView();
+        redirect.setUrl("http://localhost:8086/producto");
+        return redirect;
+    }
+    
+    @GetMapping("/getminor")
+    public RedirectView getMinorEmpresa(){
+        List<Empresa> empresas = empresaService.getMinor();
+        String temp = "http://localhost:8086/producto/all/";
+        
+        for (Empresa empresa:empresas) {
+            temp = temp.concat(String.valueOf(empresa.getId() + ","));
+        }
+        
+        RedirectView redirect = new RedirectView();
+        redirect.setUrl(temp);
+        
+        return redirect;
     }
     
     @GetMapping("/{id}")

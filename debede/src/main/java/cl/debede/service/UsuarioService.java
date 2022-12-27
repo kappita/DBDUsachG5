@@ -59,4 +59,25 @@ public class UsuarioService {
         }
     }
     
+    public Usuario login(String correo, String clave){
+        try {
+            Usuario temp = usuarioRepository.findByCorreo(correo);
+            if (temp.getClave().equals(clave))
+                return temp;
+        }
+        catch (Exception e){
+        }
+        return null;
+    }
+ 
+    public String admin(Long id) {
+        try {
+            Usuario temp = usuarioRepository.findById(id).get();
+            if (temp.isAdmin())
+                return "El usuario es administrador";
+            return "No tienes permisos";
+        } catch (Exception e) {
+            return "No existe usuario con ese ID";
+        }
+    } 
 }

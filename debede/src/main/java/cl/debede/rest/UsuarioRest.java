@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/usuario")
@@ -48,6 +49,28 @@ public class UsuarioRest {
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<List<Usuario>> getUsuarioName(@PathVariable String nombre){
         return ResponseEntity.ok(usuarioService.showName(nombre));
+    }
+    
+    @GetMapping("/login")
+    @ResponseBody
+    public RedirectView login(@RequestBody Usuario user) {
+        try {
+            Usuario temp = usuarioService.login(user.getCorreo(), user.getClave());
+            RedirectView redirect = new RedirectView();
+            if(temp.getEdad() >= 18)
+                redirect.setUrl("http://localhost:8086/empresa/getall");
+            else
+                redirect.setUrl("http://localhost:8086/empresa/getminor");
+            return redirect;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    @GetMapping("/admin/{id}")
+    @ResponseBody
+    public ResponseEntity<String> adminVerify(@PathVariable Long id) {
+        return ResponseEntity.ok(usuarioService.admin(id));
     }
     
     @PutMapping("/{id}")

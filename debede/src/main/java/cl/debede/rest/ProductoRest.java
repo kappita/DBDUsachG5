@@ -3,6 +3,7 @@ package cl.debede.rest;
 import cl.debede.model.Producto;
 import cl.debede.service.ProductoService;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,17 @@ public class ProductoRest {
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getProducto(@PathVariable Long id){
         return ResponseEntity.ok(productoService.show(id));
+    }
+    
+    @GetMapping("/all/{ids}")
+    public ResponseEntity<List<Producto>> getProductos(@PathVariable List<Long> ids){
+        List<Producto> productos = new ArrayList<>();
+        
+        for (Long id: ids){
+            productos.addAll(productoService.getByEmpresa(id));
+        }
+        
+        return ResponseEntity.ok(productos);
     }
     
     @GetMapping("/nombre/{nombre}")
